@@ -1,12 +1,9 @@
-const arrSteps = [document.getElementById('form-1'),document.getElementById('form-2'),document.getElementById('form-3'),document.getElementById('form-4')]
-const stepIndicator = [document.querySelector('.first-step'),document.querySelector('.second-step'),document.querySelector('.third-step'),document.querySelector('.fourth-step')]
-
 // Used queryselector to get all the elements the form attribute
 // Queryselector will return an array-like object that can be iterated over
 // hence there is no need for hard-coding it as before.
 // Same thing too for the step indicator as well
-const arrSteps1 = document.querySelectorAll("form");
-const stepIndicator1 = document.querySelectorAll(".step-indicator button");
+const arrSteps = document.querySelectorAll("form");
+const stepIndicator = document.querySelectorAll(".step-indicator button");
 
 const nextBtn = document.getElementById('nextBtn')
 const backBtn = document.getElementById('prevBtn')
@@ -24,9 +21,9 @@ nextBtn.addEventListener('click', function () {
   // else if it contains the word confirm, it will execute the confirm fuctionality
   if(nextBtn.textContent.includes("Next")) {
 
-    if(index < (arrSteps1.length - 1)) {
-      arrSteps1[index].style.display = 'none'
-      arrSteps1[index + 1].style.display = 'flex'
+    if(index < (arrSteps.length - 1)) {
+      arrSteps[index].style.display = 'none'
+      arrSteps[index + 1].style.display = 'flex'
   
       Object.assign(stepIndicator[index].style,{
         border: "solid 2px white",
@@ -42,7 +39,7 @@ nextBtn.addEventListener('click', function () {
       // Increment index after every click for the next form
       index++;
     }
-    if(index === (arrSteps1.length - 1)) {
+    if(index === (arrSteps.length - 1)) {
       // changes the button's textCotnent to confirm once the form displayed is the last form
       nextBtn.textContent = 'Confirm';
       Object.assign(nextBtn.style,{
@@ -71,17 +68,17 @@ backBtn.addEventListener('click', function () {
   // if the index is < the length of the form array and greater than 0
   // move to the previous form by decrementing the index
   // Same thing is applied to the step indicator as well
-  if(index < arrSteps1.length && index > 0) {
-    arrSteps1[index].style.display = "none";
-    arrSteps1[index - 1].style.display = "flex";
+  if(index < arrSteps.length && index > 0) {
+    arrSteps[index].style.display = "none";
+    arrSteps[index - 1].style.display = "flex";
 
-    Object.assign(stepIndicator1[index].style,{
+    Object.assign(stepIndicator[index].style,{
       border: "solid 2px white",
       background: "none",
       color: "white"
     })
   
-    Object.assign(stepIndicator1[index - 1].style,{
+    Object.assign(stepIndicator[index - 1].style,{
       border: "none",
       backgroundColor: "#bfe2fd",
       color: "#02295a"
