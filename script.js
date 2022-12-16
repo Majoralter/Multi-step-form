@@ -15,8 +15,6 @@ nextBtn.addEventListener('click', function nextFucntion() {
   backBtn.style.visibility = 'visible'
  
 
-
-
   Object.assign(  stepIndicator[indexIndicator].style,{
     border: "solid 2px white",
     background: "none",
