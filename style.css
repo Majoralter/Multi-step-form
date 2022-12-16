@@ -219,6 +219,11 @@ input{
     background: none;
     border: solid 1px var(--cool-gray);
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.billing-details button:hover{
+    background-color: var(--magnolia);
 }
 
 .billing-details button , .form-content-three button h3{
@@ -289,6 +294,13 @@ input[type = checkbox]:checked{
     color: var(--purplish-blue);
 }
 
+.form-content-three div{
+    cursor: pointer;
+}
+
+.form-content-three div:hover{
+    background-color: var(--magnolia);
+}
 
 .form-content-three .button-text-2{
     display: flex;
