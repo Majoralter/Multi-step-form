@@ -13,6 +13,8 @@ let index = 0;
 
 
 
+
+
 nextBtn.addEventListener('click', function () {
   backBtn.style.visibility = 'visible'
   // Since this button has two diiferent textContent depending on what form is displayed
