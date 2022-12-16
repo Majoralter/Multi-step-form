@@ -48,6 +48,8 @@ if(  indexThis === arrSteps.length-1 && indexIndicator === stepIndicator.length-
 } 
 })
 
+
+
 backBtn.addEventListener('click', () =>{
   if(indexThis === arrSteps[0] || indexThis === arrSteps[1] || indexThis === arrSteps[2]){
     nextBtn.onclick = function nextFucntion() {
