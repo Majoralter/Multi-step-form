@@ -1,98 +1,92 @@
-// Used queryselector to get all the elements the form attribute
-// Queryselector will return an array-like object that can be iterated over
-// hence there is no need for hard-coding it as before.
-// Same thing too for the step indicator as well
-const arrSteps = document.querySelectorAll("form");
-const stepIndicator = document.querySelectorAll(".step-indicator button");
+const arrSteps = [document.getElementById('form-1'),document.getElementById('form-2'),document.getElementById('form-3'),document.getElementById('form-4')]
+const stepIndicator = [document.querySelector('.first-step'),document.querySelector('.second-step'),document.querySelector('.third-step'),document.querySelector('.fourth-step')]
 
 const nextBtn = document.getElementById('nextBtn')
 const backBtn = document.getElementById('prevBtn')
+var indexThis = 0
+var indexIndicator = 0
 
 // Used a single index to monitor the movement through the list of forms and step indicator
 let index = 0;
 
 
 
-
-
-nextBtn.addEventListener('click', function () {
+nextBtn.addEventListener('click', function nextFucntion() {
+  arrSteps[indexThis].style.display = 'none'
+  arrSteps[indexThis+=1].style.display = 'flex'
   backBtn.style.visibility = 'visible'
-  // Since this button has two diiferent textContent depending on what form is displayed
-  // I checked if the current textContent contains the word next in it
-  // if it does then the functionality executed will be moving to the next page
-  // else if it contains the word confirm, it will execute the confirm fuctionality
-  if(nextBtn.textContent.includes("Next")) {
+ 
 
-    if(index < (arrSteps.length - 1)) {
-      arrSteps[index].style.display = 'none'
-      arrSteps[index + 1].style.display = 'flex'
-  
-      Object.assign(stepIndicator[index].style,{
-        border: "solid 2px white",
-        background: "none",
-        color: "white"
-      })
-    
-      Object.assign(stepIndicator[index + 1].style,{
-        border: "none",
-        backgroundColor: "#bfe2fd",
-        color: "#02295a"
-      })
-      // Increment index after every click for the next form
-      index++;
-    }
-    if(index === (arrSteps.length - 1)) {
-      // changes the button's textCotnent to confirm once the form displayed is the last form
-      nextBtn.textContent = 'Confirm';
-      Object.assign(nextBtn.style,{
-        color:"white",
-        backgroundColor:"#473dff"
-      })
-    }
-  }
-// The confirm functionality to be executed when the button textContent is confirm
-  else if(nextBtn.textContent.includes("Confirm")) {
-    arrSteps[3].style.display = "none"
-    document.getElementById('final-message').style.display = "flex"
-    nextBtn.style.visibility = "hidden"
-    backBtn.style.visibility = "hidden"
-  }
-})
-
-backBtn.addEventListener('click', function () {
-  // Change the next button textContent from confirm to next step and style differently
-  nextBtn.textContent = "Next Step";
-  Object.assign(nextBtn.style,{
-    color:"white",
-    backgroundColor:"#02295a"
+  Object.assign(  stepIndicator[indexIndicator].style,{
+    border: "solid 2px white",
+    background: "none",
+    color: "white"
   })
 
-  // if the index is < the length of the form array and greater than 0
-  // move to the previous form by decrementing the index
-  // Same thing is applied to the step indicator as well
-  if(index < arrSteps.length && index > 0) {
-    arrSteps[index].style.display = "none";
-    arrSteps[index - 1].style.display = "flex";
+  Object.assign(  stepIndicator[indexIndicator+=1].style,{
+    border: "none",
+    backgroundColor: "#bfe2fd",
+    color: "#02295a"
+  })
 
-    Object.assign(stepIndicator[index].style,{
+
+if(  indexThis === arrSteps.length-1 && indexIndicator === stepIndicator.length-1 && indexThis != arrSteps[0] && indexThis != arrSteps[1] && indexThis != arrSteps[2]) {
+ nextBtn.textContent = 'Confirm'
+ Object.assign(nextBtn.style,{
+  color:"white",
+  backgroundColor:"#473dff"
+ })
+
+ if(indexThis === arrSteps.length-1 && indexIndicator === stepIndicator.length-1){
+ nextBtn.onclick = function confirmThis() {
+  arrSteps[3].style.display = "none"
+  document.getElementById('final-message').style.display = "flex"
+  nextBtn.style.visibility = "hidden"
+  backBtn.style.visibility = "hidden"
+ }
+}
+} 
+})
+
+
+
+backBtn.addEventListener('click', () =>{
+  if(indexThis === arrSteps[0] || indexThis === arrSteps[1] || indexThis === arrSteps[2]){
+    nextBtn.onclick = function nextFucntion() {
+      arrSteps[indexThis].style.display = 'none'
+      arrSteps[indexThis+=1].style.display = 'flex'
+     }
+  }
+
+  
+  nextBtn.textContent = 'Next Step'
+  Object.assign(nextBtn.style,{
+   color:"white",
+   backgroundColor:"#02295a"
+  })
+
+
+
+  if(indexThis>0){
+    arrSteps[indexThis].style.display = 'none'
+    arrSteps[indexThis-=1].style.display = 'flex'
+  
+  
+    Object.assign(  stepIndicator[indexIndicator].style,{
       border: "solid 2px white",
       background: "none",
       color: "white"
     })
   
-    Object.assign(stepIndicator[index - 1].style,{
+    Object.assign(  stepIndicator[indexIndicator-=1].style,{
       border: "none",
       backgroundColor: "#bfe2fd",
       color: "#02295a"
     })
   }
-  // if index is 0 or less, hide the back button as that is the first element and it has no element before it
-  if((index - 1) <= 0) {
-    backBtn.style.visibility = "hidden";
+  if(indexThis === 0){
+    backBtn.style.visibility="hidden"
   }
-  
-  // Decrement index to simulate page moving backward;
-  index --
  
 })
 
