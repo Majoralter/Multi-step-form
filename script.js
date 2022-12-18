@@ -113,3 +113,86 @@ priceBonus1.classList.toggle("active")
 priceBonus2.classList.toggle("active")
 priceBonus3.classList.toggle("active")
 })
+
+
+
+const arcadePlan = document.getElementById('arcade-plan')
+const advancedPlan = document.getElementById('advanced-plan')
+const proPlan = document.getElementById('pro-plan')
+
+let selectedBilling = document.getElementById("selected-billing")
+let constPrice = document.querySelector('.price')
+let addonPrice1 = document.querySelector('.price-2')
+let addonPrice2 = document.querySelector('.price-3')
+
+
+arcadePlan.onclick = function changeText() {
+    selectedBilling.textContent = "Arcade (monthly)"
+    constPrice.textContent = "$9/mo"
+}
+
+
+advancedPlan.onclick = function changeText() {
+    selectedBilling.textContent = "Advanced (monthly)"
+    constPrice.textContent = "$12/mo" 
+}
+
+proPlan.onclick = function changeText() {
+    selectedBilling.textContent = "Pro (monthly)"
+    constPrice.textContent = "$15/mo" 
+}
+
+
+toggleBtn.onclick = function yearlyToggle(){
+
+console.log("i am working!")
+
+arcadePlan.onclick = function changeText(){
+  if(priceElYear1.classList.contains("active")){
+    selectedBilling.textContent = "Arcade (yearly)"
+    constPrice.textContent = "$90/yr"
+} else{
+  selectedBilling.textContent = "Arcade (monthly)"
+    constPrice.textContent = "$9/mo"
+}
+    }
+
+advancedPlan.onclick = function changeText(){
+if(priceElYear2.classList.contains("active")){
+    selectedBilling.textContent = "Advanced (yearly)"
+    constPrice.textContent = "$120/yr"
+} else{
+  selectedBilling.textContent = "Advanced (monthly)"
+    constPrice.textContent = "$12/mo"
+}
+}
+
+
+    proPlan.onclick = function changeText(){
+      if(priceElYear3.classList.contains("active")){
+        selectedBilling.textContent = "Pro (yearly)"
+        constPrice.textContent = "$150/yr"
+    } else{
+      selectedBilling.textContent = "Pro (monthly)"
+        constPrice.textContent = "$15/mo"
+    }
+        }
+
+        if(priceBonus1.classList.contains("active")){
+          document.getElementById("addon-price-1").textContent = "+$10/yr"
+        } else{
+          document.getElementById("addon-price-1").textContent = "+$1/mo"
+        }
+        if(priceBonus2.classList.contains("active")){
+          document.getElementById("addon-price-2").textContent = "+$20/yr"
+        } else{
+          document.getElementById("addon-price-2").textContent = "+$2/mo"
+        }
+        if(priceBonus3.classList.contains("active")){
+          document.getElementById("addon-price-3").textContent = "+$20/yr"
+        } else{
+          document.getElementById("addon-price-3").textContent = "+$2/mo"
+        }
+
+        
+}
